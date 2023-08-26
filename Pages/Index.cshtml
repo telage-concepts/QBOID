@@ -131,7 +131,9 @@
 @section Scripts{
             <script src="https://devembed.azurewebsites.net/embed/js" type="text/javascript"></script>
             <script>
-                    loadMimEmbedded('submit', {
+                var data;
+                document.getElementById('submit').addEventListener('hover', () =>{
+                    data = {
                         email: document.getElementById('email').value,
                         phoneNumber: document.getElementById('PhoneNumber').value,
                         bvn: document.getElementById('BVN').value,
@@ -160,6 +162,7 @@
                     
                         }
                 }
-            )
+                })
+                    loadMimEmbedded('submit', data)
             </script>
     }
