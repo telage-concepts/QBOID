@@ -131,8 +131,34 @@
 @section Scripts{
             <script src="https://devembed.azurewebsites.net/embed/js" type="text/javascript"></script>
             <script>
-                var data;
-                document.getElementById('submit').addEventListener('hover', () =>{
+                var data= {
+                        email: document.getElementById('email').value,
+                        phoneNumber: document.getElementById('PhoneNumber').value,
+                        bvn: document.getElementById('BVN').value,
+                        apiKey: "@Model.apiKey",
+                        authorisation:  '@ViewData["Authorization"]',
+                        requestKey: "@Model.requestKey",
+                        loanId: "@Guid.NewGuid().ToString()",
+                        bankCode: document.getElementById('BankCode').value,
+                        BankAccountNumber: document.getElementById('BankAccountNumber').value,
+                        employmentRecord: {
+                            sector: document.getElementById('EmployerSector').value,
+                            employmentType: document.getElementById('EmploymentType').value,
+                            employerName : document.getElementById('EmployerName').value,
+                            employerAddress : document.getElementById('EmployerAddress').value,
+                            city : document.getElementById('EmployerCity').value,
+                            state : document.getElementById('EmployerState').value,
+                            employerPhone : document.getElementById('EmployerPhoneNumber').value,
+                            employmentDate : document.getElementById('EmploymentDate').value,
+                            netMonthlyIncome : document.getElementById('NetMonthlyIncome').value,
+                            duration : document.getElementById("EmploymentDuration").value,
+                            nextPayDay: document.getElementById("NextPayDay").value,
+                            toleranceDays: document.getElementById("ToleranceDays").value,
+                            totalMonthlyExpense: document.getElementById("TotalMonthlyExpense").value,
+                            salaryFrequency: document.getElementById("SalaryFrequency").value,
+                            incomeReceiptMode: document.getElementById("EmploymentDuration").value}}
+                    var btn= document.getElementById('submit');
+                    btn.addEventListener('hover', () =>{
                     data = {
                         email: document.getElementById('email').value,
                         phoneNumber: document.getElementById('PhoneNumber').value,
