@@ -1,13 +1,10 @@
 ﻿@page
 @model IndexModel
 @using QBOID.Models
-@using System.Security.Cryptography
+
 
 @{
     ViewData["Title"] = "Home page";
-    var requestKey = Guid.NewGuid().ToString();
-    var apiKey = "<API Key>";
-    var apiSecret = "<API Secret>";
 }
 
 <div class="text-center">
@@ -131,25 +128,16 @@
     </form>
     </div>
 </div>
-        using (var hashTool = new SHA512Managed())
-        {
-            encryptedBytes = hashTool.ComputeHash(System.Text.Encoding.UTF8.GetBytes(string.Concat(value)));
-            hashTool.Clear();
-        }
-
 @section Scripts{
             <script src="https://devembed.azurewebsites.net/embed/js" type="text/javascript"></script>
             <script>
-                @{SHA512 shaM = new SHA512Managed();
-                byte[] enc = shaM.ComputeHash(apiKey + requestKey + apiSecret)}
-
                     loadMimEmbedded('submit', {
                         email: document.getElementById('email').value,
                         phoneNumber: document.getElementById('PhoneNumber').value,
                         bvn: document.getElementById('BVN').value,
-                        apiKey: "@apiKey",
-                        authorisation:  "@(().Sha512Hash())",
-                        requestKey: "@requestKey",
+                        apiKey: "@Model.apiKey",
+                        authorisation:  '@ViewData["Authorization"]',
+                        requestKey: "@Model.requestKey",
                         loanId: "@Guid.NewGuid().ToString()",
                         bankCode: document.getElementById('BankCode').value,
                         BankAccountNumber: document.getElementById('BankAccountNumber').value,
