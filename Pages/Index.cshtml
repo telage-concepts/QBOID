@@ -136,7 +136,7 @@
                         phoneNumber: document.getElementById('PhoneNumber').value,
                         bvn: document.getElementById('BVN').value,
                         apiKey: "@Model.apiKey",
-                        authorisation:  '@ViewData["Authorization"]',
+                        authorisation:  '@ViewData["Authorisation"]',
                         requestKey: "@Model.requestKey",
                         loanId: "@Guid.NewGuid().ToString()",
                         bankCode: document.getElementById('BankCode').value,
@@ -158,13 +158,13 @@
                             salaryFrequency: document.getElementById("SalaryFrequency").value,
                             incomeReceiptMode: document.getElementById("EmploymentDuration").value}}
                     var btn= document.getElementById('submit');
-                    btn.addEventListener('hover', () =>{
-                    data = {
+                    btn.addEventListener("mouseover", () =>{
+                    loadMimEmbedded('submit', {
                         email: document.getElementById('email').value,
                         phoneNumber: document.getElementById('PhoneNumber').value,
                         bvn: document.getElementById('BVN').value,
                         apiKey: "@Model.apiKey",
-                        authorisation:  '@ViewData["Authorization"]',
+                        authorisation:  '@ViewData["Authorisation"]',
                         requestKey: "@Model.requestKey",
                         loanId: "@Guid.NewGuid().ToString()",
                         bankCode: document.getElementById('BankCode').value,
@@ -184,11 +184,8 @@
                             toleranceDays: document.getElementById("ToleranceDays").value,
                             totalMonthlyExpense: document.getElementById("TotalMonthlyExpense").value,
                             salaryFrequency: document.getElementById("SalaryFrequency").value,
-                            incomeReceiptMode: document.getElementById("EmploymentDuration").value
-                    
-                        }
-                }
+                            incomeReceiptMode: document.getElementById("EmploymentDuration").value}})
                 })
-                    loadMimEmbedded('submit', data)
+
             </script>
     }

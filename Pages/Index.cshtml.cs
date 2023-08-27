@@ -43,8 +43,8 @@ public class IndexModel : PageModel
         apiSecret = "a24c87f6d0560a8910bd6d6848218e0c9eca2aa9143642108c74cc76bc6ee848dbac80a1855844ca3d64fbafa60a8cd204d8322df8a2426ddb9eab2314b20c94";
 
         var toenc = new StringBuilder();
-        toenc.Append(requestKey);
         toenc.Append(apiKey);
+        toenc.Append(requestKey);
         toenc.Append(apiSecret);
 
         var enc = this.Sha512Hash(toenc.ToString());
