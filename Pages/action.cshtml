@@ -1,0 +1,47 @@
+﻿@page "/action"
+@model QBOID.Pages.actionModel
+@{
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <button id="MIMLoanBtn" type="button" class="btn btn-primary">Take Loan</button>
+</div>
+
+
+@section Scripts{
+            <script src="https://devembed.azurewebsites.net/embed/js" type="text/javascript"></script>
+            <script>
+                
+
+                loadMimEmbedded('MIMLoanBtn', {
+                    email: "@Model.Loan.Email",
+                    phoneNumber: "@Model.Loan.PhoneNumber",
+                    bvn: "@Model.Loan.BankVerificationNumber",
+                    apiKey: "@Model.apiKey",
+                    authorisation: '@ViewData["Authorisation"]',
+                    requestKey: "@Model.requestKey",
+                    loanId: "@Guid.NewGuid().ToString()",
+                    bankCode: "@Model.Loan.BankCode",
+                    BankAccountNumber: "@Model.Loan.BankAccountNumber",
+                    employmentRecord: {
+                        sector: "@Model.EmployerSector",
+                        employmentType: "@Model.EmploymentType",
+                        employerName: "@Model.Loan.EmployeeRecord.EmployerName",
+                        employerAddress: "@Model.Loan.EmployeeRecord.EmployerAddress",
+                        city: "@Model.Loan.EmployeeRecord.City",
+                        state: "@Model.Loan.EmployeeRecord.State",
+                        employerPhone: "@Model.Loan.EmployeeRecord.EmployerPhone",
+                        employmentDate: '@Model.EmploymentDateString',
+                        netMonthlyIncome: @Model.Loan.EmployeeRecord.NetMonthlyIncome,
+                        duration: @Model.EmploymentDuration,
+                        nextPayDay: '@Model.NextPayDayString',
+                        toleranceDays: @Model.Loan.EmployeeRecord.ToleranceDays,
+                        totalMonthlyExpense: @Model.Loan.EmployeeRecord.TotalMonthlyExpense,
+                        salaryFrequency: @Model.SalaryFrequency,
+                        incomeReceiptMode: @Model.IncomeReceiptMode
+                    }
+                });
+            </script>
+    }

@@ -24070,6 +24070,16 @@
       "FilePath": "c:\\Users\\hp\\Documents\\QBOID\\Pages\\Shared\\_Layout.cshtml",
       "TargetPath": "Pages\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\hp\\Documents\\QBOID\\Pages\\action.cshtml",
+      "TargetPath": "Pages\\action.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\hp\\Documents\\QBOID\\action.cshtml",
+      "TargetPath": "action.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }

@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\hp\Documents\QBOID
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/hp/Documents/QBOID/action.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YWN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hp/Documents/QBOID/Pages/action.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hp/Documents/QBOID/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
