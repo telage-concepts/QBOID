@@ -94,6 +94,14 @@ namespace QBOID.Pages
             if(expectedAuthorisation.ToString() != authorisation){
                 return Forbid();
             }
+
+            var Loan = _context.Loans.First(l => l.LoanID == new Guid(loanId));
+            Loan.MimLoanId = new Guid(mimLoanId);
+            Loan.Status = (LoanStatus)int.Parse(status);
+            Loan.Activity = (LoanActivity)int.Parse(activity);
+            _context.Loans.Update(Loan);
+            _context.SaveChanges();
+
             return Page();
         }
     }
