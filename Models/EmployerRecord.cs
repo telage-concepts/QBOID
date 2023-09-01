@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QBOID.Models;
 
-public class EmployeeRecord
+public class EmployerRecord
 {
+    public Guid EmployerRecordID{get; set;}
     public EmployerSector EmployerSector {get; set;}
     public EmploymentType EmploymentType {get; set;}
     public string EmployerName {get; set;}

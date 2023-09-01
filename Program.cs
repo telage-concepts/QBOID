@@ -1,6 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using QBOID;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<ApplicationDbContext>(
+    options => options.UseSqlite(builder
+    .Configuration.GetConnectionString(builder.Configuration.GetConnectionString("Default"))));
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

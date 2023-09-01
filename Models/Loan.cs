@@ -10,5 +10,9 @@ public class Loan
     public string BankVerificationNumber{get; set;}
     public string BankCode{get; set;}
     public string BankAccountNumber{get; set;}
-    public EmployeeRecord EmployeeRecord{get; set;}
+    public LoanStatus Status {get; set;} = LoanStatus.None;
+    public LoanActivity Activity {get; set;} =  LoanActivity.None;
+    public Guid EmployerRecordID{get; set;}
+    public EmployerRecord EmployerRecord{get; set;}
+    public Guid MimLoanId{get; set;}
 }
