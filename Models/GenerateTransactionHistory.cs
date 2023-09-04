@@ -14,7 +14,7 @@ public class GenerateTransactionHistory
             
 
             for(int i = 0; i < 10 ; i++){
-                date.AddMonths(-(1+i));
+                date = date.AddMonths(-1);
                 Random r = new Random();
                 Transaction Transaction = new Transaction{
                     CustomerID = Customer.CustomerID,
@@ -30,10 +30,6 @@ public class GenerateTransactionHistory
     }
     private static bool CustomerExists(ApplicationDbContext context, string Email){
         _context = context;
-        var Customer = _context.Customers.First(c => c.Email == Email);
-        if(Customer != null){
-            return true;
-        }
-        return false;
+        return (_context.Customers?.Any(e => e.Email == Email)).GetValueOrDefault();
     }
 }

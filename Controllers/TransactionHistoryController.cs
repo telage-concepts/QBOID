@@ -14,13 +14,15 @@ namespace QBOID.Controllers
         public string Email {set; get;}
         public string? PhoneNumber{get; set;}
     }
+    [ApiController]
+    [Route("[controller]")]
     public class TransactionHistoryController : Controller
     {
         private readonly ApplicationDbContext _context;
         public TransactionHistoryController(ApplicationDbContext context){
             _context = context;
         }
-        [HttpPost("")]
+        [HttpPost]
         public IActionResult Index(TransactionHistoryQuery transactionHistoryQuery)
         {
             string ExpectedAuthorisation = Sha512.Sha512AuthHash(transactionHistoryQuery.RequestKey).ToString();
