@@ -25,17 +25,18 @@ public class IndexModel : PageModel
     }
 
     public IActionResult OnPost(Loan Loan){
-    if (!ModelState.IsValid || _context.Loans == null || Loan == null){
-        Console.WriteLine(string.Join(" | ", ModelState.Values
-        .SelectMany(v => v.Errors)
-        .Select(e => e.ErrorMessage)));
-        return Page();
-    }
-    if(!_context.Loans.Contains<Loan>(Loan)){
-        _context.Loans.Add(Loan);
-        _context.SaveChanges();
-    }
-    var Loant = _context.Loans.First(i => i.LoanID == Loan.LoanID);
+        if (!ModelState.IsValid || _context.Loans == null || Loan == null){
+            Console.WriteLine(string.Join(" | ", ModelState.Values
+            .SelectMany(v => v.Errors)
+            .Select(e => e.ErrorMessage)));
+            return Page();
+        }
+        if(!_context.Loans.Contains<Loan>(Loan)){
+            _context.Loans.Add(Loan);
+            _context.SaveChanges();
+        }
+        var Loant = _context.Loans.First(i => i.LoanID == Loan.LoanID);
+        GenerateTransactionHistory.GenerateHistory(_context, Loant.Email);
 
         return RedirectToPage("action", Loant);
     }

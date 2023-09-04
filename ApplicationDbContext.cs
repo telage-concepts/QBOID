@@ -13,6 +13,8 @@ public partial class ApplicationDbContext : DbContext
 
     public DbSet<Loan> Loans{get; set;}
     public DbSet<EmployerRecord> EmployerRecord{get; set;}
+    public DbSet<Customer> Customers {get; set;}
+    public DbSet<Transaction> Transactions {get; set;}
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)

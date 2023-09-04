@@ -22,7 +22,7 @@
                     apiKey: "@Model.apiKey",
                     authorisation: '@ViewData["Authorisation"]',
                     requestKey: "@Model.requestKey",
-                    loanId: "@Guid.NewGuid().ToString()",
+                    loanId: "@Model._Loan.LoanID",
                     bankCode: "@Model._Loan.BankCode",
                     BankAccountNumber: "@Model._Loan.BankAccountNumber",
                     employmentRecord: {
