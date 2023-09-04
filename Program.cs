@@ -9,6 +9,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(
     .Configuration.GetConnectionString(builder.Configuration.GetConnectionString("Default"))));
 
 builder.Services.AddRazorPages();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 

@@ -1,0 +1,32 @@
+﻿@page
+@model QBOID.Pages.RedirectUrlModel
+@{
+}
+
+My heart beats for LOLA
+
+
+@section Scripts{
+    <script>
+        fetch("https://devembed.azurewebsites.net/embed/webhook/request-loan-status", {
+        method: "post",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+
+        //make sure to serialize your JSON body
+        body: JSON.stringify({
+            LoanId: `@Model._LoanId`,
+            ApiKey: `@Model.apiKey`,
+            RequestKey: `@Model.requestKey`,
+            Authorisation : `@ViewData["Authorisation"]`
+        })
+        })
+        .then( (response) => { 
+        //do something awesome that makes the world a better place
+        console.log(response);
+        });
+    </script>
+
+}

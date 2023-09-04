@@ -5,7 +5,8 @@ public enum LoanActivity
     None = 0,
     Submitted,
     Approved,
-    Disbursed,
-    PaymentReceived,
+    Rejected,
+    MoneyDisbursed,
+    RepaymentReceived,
     WrittenOff
 }

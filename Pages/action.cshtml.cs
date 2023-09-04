@@ -2,8 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using QBOID.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Security.Cryptography;
-using System.Text;
 using System.Globalization;
 using QBOID;
 
@@ -29,25 +27,10 @@ namespace QBOID.Pages
         public string EmploymentDateString;
         public string NextPayDayString;
         public string requestKey;
-        public string apiKey = "a24c87f6d0560a8910bd6d6848218e0c9eca2aa9143642108c74cc76bc6ee848dbac80a1855844ca3d64fbafa60a8cd204d8322df8a2426ddb9eab2314b20c94";
-        public string apiSecret = "8da556fa346f73544d38961d93d64774ef62a5a235a9db8800e6138110184efef5144b015f184394e179644da37218e6d455d6627feb1bec66e1ba1d0dc1fade";
+        public string apiKey = "OWY2NDUyZjUtYTQ4MC00NjA1LWI3NDctODRmN2QwYjFlNjli";
+        public string apiSecret = "MjM1MTg3OWMtOThmYS00ZDY1LTlmMzQtMzEyMTJmNWQxOGQz";
 
 
-        public StringBuilder Sha512Hash(string data)
-    {
-        var message = Encoding.UTF8.GetBytes(data);
-        var hex = new StringBuilder();
-        using (var sha512 = SHA512.Create())
-        {
-            var hashValue = sha512.ComputeHash(message);
-
-            foreach (byte x in hashValue)
-            {
-                hex.Append(string.Format("{0:x2}", x));
-            }
-            return hex;
-        }
-    }
 
         [BindProperty]
         public Loan _Loan {get; set;}
@@ -58,12 +41,7 @@ namespace QBOID.Pages
             }
             requestKey = Guid.NewGuid().ToString();
 
-            var toenc = new StringBuilder();
-            toenc.Append(apiKey);
-            toenc.Append(requestKey);
-            toenc.Append(apiSecret);
-
-            var enc = this.Sha512Hash(toenc.ToString());
+            var enc = Sha512.Sha512AuthHash(requestKey);
             
             ViewData["Authorisation"] = enc.ToString();
 
@@ -84,12 +62,8 @@ namespace QBOID.Pages
 
         public IActionResult OnPost(string authorisation, string requestKey, string mimLoanId,
          string status,  string loanId, string activity){
-        var toenc = new StringBuilder();
-            toenc.Append(apiKey);
-            toenc.Append(requestKey);
-            toenc.Append(apiSecret);
 
-            var expectedAuthorisation = this.Sha512Hash(toenc.ToString());
+            var expectedAuthorisation = Sha512.Sha512AuthHash(requestKey);
 
             if(expectedAuthorisation.ToString() != authorisation){
                 return Forbid();
@@ -102,7 +76,7 @@ namespace QBOID.Pages
             _context.Loans.Update(Loan);
             _context.SaveChanges();
 
-            return Page();
+            return RedirectToPage("Loans/LoanDetails", new {id = Loan.LoanID});
         }
     }
 }
