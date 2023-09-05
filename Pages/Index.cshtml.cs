@@ -13,7 +13,9 @@ public class IndexModel : PageModel
     public Loan Loan{get; set;} = default!;
     private readonly ILogger<IndexModel> _logger;
     private readonly QBOID.ApplicationDbContext _context;
-
+    public string requestKey;
+    public string apiKey = "OWY2NDUyZjUtYTQ4MC00NjA1LWI3NDctODRmN2QwYjFlNjli";
+    public string apiSecret = "MjM1MTg3OWMtOThmYS00ZDY1LTlmMzQtMzEyMTJmNWQxOGQz";
     public IndexModel(ILogger<IndexModel> logger, QBOID.ApplicationDbContext context)
     {
         _logger = logger;
@@ -22,6 +24,9 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
+            requestKey = Guid.NewGuid().ToString();
+            var enc = Sha512.Sha512AuthHash(requestKey);
+            ViewData["Authorisation"] = enc.ToString();
     }
 
     public IActionResult OnPost(Loan Loan){

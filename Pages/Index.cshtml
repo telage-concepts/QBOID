@@ -120,7 +120,7 @@
             <div class="form-group">
                 <label class="control-label">Income Receipt Mode: </label>
                 <select asp-for="Loan.EmployerRecord.IncomeReceiptMode" 
-                asp-items="Html.GetEnumSelectList<IncomeReceiptMode>()" id="EmploymentDuration" class="form-control"></select>
+                asp-items="Html.GetEnumSelectList<IncomeReceiptMode>()" id="IncomeReceiptMode" class="form-control"></select>
                 <span asp-validation-for="Loan.EmployerRecord.IncomeReceiptMode" class="text-danger"></span>
             </div>
 
@@ -131,61 +131,116 @@
 @section Scripts{
             <script src="https://devembed.azurewebsites.net/embed/js" type="text/javascript"></script>
             <script>
-                @* var data= {
-                        email: document.getElementById('email').value,
-                        phoneNumber: document.getElementById('PhoneNumber').value,
-                        bvn: document.getElementById('BVN').value,
-                        apiKey: "@Model.apiKey",
-                        authorisation:  '@ViewData["Authorisation"]',
-                        requestKey: "@Model.requestKey",
-                        loanId: "@Guid.NewGuid().ToString()",
-                        bankCode: document.getElementById('BankCode').value,
-                        BankAccountNumber: document.getElementById('BankAccountNumber').value,
-                        employmentRecord: {
-                            sector: document.getElementById('EmployerSector').value,
-                            employmentType: document.getElementById('EmploymentType').value,
-                            employerName : document.getElementById('EmployerName').value,
-                            employerAddress : document.getElementById('EmployerAddress').value,
-                            city : document.getElementById('EmployerCity').value,
-                            state : document.getElementById('EmployerState').value,
-                            employerPhone : document.getElementById('EmployerPhoneNumber').value,
-                            employmentDate : document.getElementById('EmploymentDate').value,
-                            netMonthlyIncome : document.getElementById('NetMonthlyIncome').value,
-                            duration : document.getElementById("EmploymentDuration").value,
-                            nextPayDay: document.getElementById("NextPayDay").value,
-                            toleranceDays: document.getElementById("ToleranceDays").value,
-                            totalMonthlyExpense: document.getElementById("TotalMonthlyExpense").value,
-                            salaryFrequency: document.getElementById("SalaryFrequency").value,
-                            incomeReceiptMode: document.getElementById("EmploymentDuration").value}}
-                    var btn= document.getElementById('submit');
-                    btn.addEventListener("mouseover", () =>{
-                    loadMimEmbedded('submit', {
-                        email: document.getElementById('email').value,
-                        phoneNumber: document.getElementById('PhoneNumber').value,
-                        bvn: document.getElementById('BVN').value,
-                        apiKey: "@Model.apiKey",
-                        authorisation:  '@ViewData["Authorisation"]',
-                        requestKey: "@Model.requestKey",
-                        loanId: "@Guid.NewGuid().ToString()",
-                        bankCode: document.getElementById('BankCode').value,
-                        BankAccountNumber: document.getElementById('BankAccountNumber').value,
-                        employmentRecord: {
-                            sector: document.getElementById('EmployerSector').value,
-                            employmentType: document.getElementById('EmploymentType').value,
-                            employerName : document.getElementById('EmployerName').value,
-                            employerAddress : document.getElementById('EmployerAddress').value,
-                            city : document.getElementById('EmployerCity').value,
-                            state : document.getElementById('EmployerState').value,
-                            employerPhone : document.getElementById('EmployerPhoneNumber').value,
-                            employmentDate : document.getElementById('EmploymentDate').value,
-                            netMonthlyIncome : document.getElementById('NetMonthlyIncome').value,
-                            duration : document.getElementById("EmploymentDuration").value,
-                            nextPayDay: document.getElementById("NextPayDay").value,
-                            toleranceDays: document.getElementById("ToleranceDays").value,
-                            totalMonthlyExpense: document.getElementById("TotalMonthlyExpense").value,
-                            salaryFrequency: document.getElementById("SalaryFrequency").value,
-                            incomeReceiptMode: document.getElementById("EmploymentDuration").value}})
-                }) *@
+                EmailInput = document.getElementById('email');
+                PhoneNumberInput = document.getElementById('PhoneNumber');
+                BvnInput = document.getElementById('BVN');
+                BankCodeInput = document.getElementById('BankCode');
+                BankAccountNumberInput = document.getElementById('BankAccountNumber');
+                SectorInput = document.getElementById('EmployerSector');
+                EmploymentTypeInput = document.getElementById('EmploymentType');
+                EmployerNameInput = document.getElementById('EmployerName');
+                EmployerAddressInput = document.getElementById('EmployerAddress');
+                EmployerCityInput = document.getElementById('EmployerCity');
+                EmployerStateInput = document.getElementById('EmployerState');
+                EmployerPhoneInput = document.getElementById('EmployerPhoneNumber');
+                EmploymentDateInput = document.getElementById('EmploymentDate');
+                NetMonthlyIncomeInput = document.getElementById('NetMonthlyIncome');
+                EmploymentDurationInput = document.getElementById("EmploymentDuration");
+                NextPayDayInput = document.getElementById("NextPayDay");
+                ToleranceDaysInput = document.getElementById("ToleranceDays");
+                TotalMonthlyExpenseInput = document.getElementById("TotalMonthlyExpense");
+                SalaryFrequencyInput = document.getElementById("SalaryFrequency");
+                IncomeReceiptModeInput = document.getElementById("IncomeReceiptMode");
 
+                var data= {
+                        email: EmailInput.value,
+                        phoneNumber: PhoneNumberInput.value,
+                        bvn: BvnInput.value,
+                        apiKey: "@Model.apiKey",
+                        authorisation:  '@ViewData["Authorisation"]',
+                        requestKey: "@Model.requestKey",
+                        loanId: "@Guid.NewGuid().ToString()",
+                        bankCode: BankCodeInput.value,
+                        BankAccountNumber: BankAccountNumberInput.value,
+                        employmentRecord: {
+                            sector: SectorInput.value,
+                            employmentType: EmploymentTypeInput.value,
+                            employerName : EmployerNameInput.value,
+                            employerAddress : EmployerAddressInput.value,
+                            city : EmployerCityInput.value,
+                            state : EmployerStateInput.value,
+                            employerPhone : EmployerPhoneInput.value,
+                            employmentDate : EmploymentDateInput.value,
+                            netMonthlyIncome : NetMonthlyIncomeInput.value,
+                            duration : EmploymentDurationInput.value,
+                            nextPayDay: NextPayDayInput.value,
+                            toleranceDays: ToleranceDaysInput.value,
+                            totalMonthlyExpense: TotalMonthlyExpenseInput.value,
+                            salaryFrequency: SalaryFrequencyInput.value,
+                            incomeReceiptMode: IncomeReceiptModeInput.value}
+                }
+
+                EmailInput.addEventListener("change", () => {
+                    data.email = EmailInput.value;
+                });
+                PhoneNumberInput.addEventListener("change", () => {
+                    data.phoneNumber = PhoneNumberInput.value;
+                });
+                BvnInput.addEventListener("change", () => {
+                    data.bvn = BvnInput.value;
+                });
+                BankCodeInput.addEventListener("change", () => {
+                    data.bankCode = BankCodeInput.value;
+                });
+                BankAccountNumberInput.addEventListener("change", () => {
+                    data.BankAccountNumber = BankAccountNumberInput.value;
+                });
+                SectorInput.addEventListener("change", () => {
+                    data.employmentRecord.sector = SectorInput.value;
+                });
+                EmploymentTypeInput.addEventListener("change", () => {
+                    data.employmentRecord.employmentType = EmploymentTypeInput.value;
+                });
+                EmployerNameInput.addEventListener("change", () => {
+                    data.employmentRecord.employerName = EmployerNameInput.value;
+                });
+                EmployerAddressInput.addEventListener("change", () => {
+                    data.employmentRecord.employerAddress = EmployerAddressInput.value;
+                });
+                EmployerCityInput.addEventListener("change", () => {
+                    data.employmentRecord.city = EmployerCityInput.value;
+                });
+                EmployerStateInput.addEventListener("change", () => {
+                    data.employmentRecord.state = EmployerStateInput.value;
+                });
+                EmployerPhoneInput.addEventListener("change", () => {
+                    data.employmentRecord.employerPhone = EmployerPhoneInput.value;
+                });
+                EmploymentDateInput.addEventListener("change", () => {
+                    data.employmentRecord.employmentDate = EmploymentDateInput.value;
+                });
+                NetMonthlyIncomeInput.addEventListener("change", () => {
+                    data.employmentRecord.netMonthlyIncome = NetMonthlyIncomeInput.value;
+                });
+                EmploymentDurationInput.addEventListener("change", () => {
+                    data.employmentRecord.duration = EmploymentDurationInput.value;
+                });
+                NextPayDayInput.addEventListener("change", () => {
+                    data.employmentRecord.nextPayDay = NextPayDayInput.value;
+                });
+                ToleranceDaysInput.addEventListener("change", () => {
+                    data.employmentRecord.toleranceDays = ToleranceDaysInput.value;
+                });
+                TotalMonthlyExpenseInput.addEventListener("change", () => {
+                    data.employmentRecord.totalMonthlyExpense = TotalMonthlyExpenseInput.value;
+                });
+                SalaryFrequencyInput.addEventListener("change", () => {
+                    data.employmentRecord.salaryFrequency = SalaryFrequencyInput.value;
+                });
+                IncomeReceiptModeInput.addEventListener("change", () => {
+                    data.employmentRecord.incomeReceiptMode = IncomeReceiptModeInput.value;
+                });
+            
+                loadMimEmbedded('submit', data)
             </script>
     }
