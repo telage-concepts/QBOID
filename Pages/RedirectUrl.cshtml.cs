@@ -50,7 +50,7 @@ namespace QBOID.Pages
             _context.Loans.Update(Loan);
             _context.SaveChanges();
 
-            if(Loan.Status == LoanStatus.Active){
+            if(Loan.Status == LoanStatus.Review || Loan.Status == LoanStatus.Active){
                 return RedirectToPage("LoanApplicationSuccess");
             }else{
                 return RedirectToPage("LoanApplicationFailure");
