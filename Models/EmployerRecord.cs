@@ -8,11 +8,11 @@ public class EmployerRecord
     public Guid EmployerRecordID{get; set;}
     public EmployerSector EmployerSector {get; set;}
     public EmploymentType EmploymentType {get; set;}
-    public string EmployerName {get; set;}
-    public string EmployerAddress{get; set;}
-    public string City {get; set;}
-    public string State{get; set;}
-    public string EmployerPhone{get; set;}
+    public string? EmployerName {get; set;}
+    public string? EmployerAddress{get; set;}
+    public string? City {get; set;}
+    public string? State{get; set;}
+    public string? EmployerPhone{get; set;}
 
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode =true)]

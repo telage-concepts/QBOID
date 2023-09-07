@@ -2,14 +2,14 @@
 
 public class GenerateTransactionHistory
 {
-    private static ApplicationDbContext _context;
+    private static ApplicationDbContext? _context;
     public static void GenerateHistory(ApplicationDbContext context, string Email){
         _context = context;
         if(!CustomerExists(_context, Email)){
             Customer Customer = new Customer{
                 Email = Email
             };
-            _context.Customers.Add(Customer);
+            _context.Customers!.Add(Customer);
             DateTime date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 28);
             
 
@@ -21,7 +21,7 @@ public class GenerateTransactionHistory
                     Date = date,
                     Amount = (Decimal)r.NextDouble() * 1000000
                 };
-                _context.Transactions.Add(Transaction);
+                _context.Transactions!.Add(Transaction);
             }
 
             _context.SaveChanges();

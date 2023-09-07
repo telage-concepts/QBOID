@@ -24,19 +24,19 @@ namespace QBOID.Pages
         public int SalaryFrequency;
         public DateTime EmploymentDate;
         public DateTime NextPayDay;
-        public string EmploymentDateString;
-        public string NextPayDayString;
-        public string requestKey;
+        public string? EmploymentDateString;
+        public string? NextPayDayString;
+        public string? requestKey;
         public string apiKey = "OWY2NDUyZjUtYTQ4MC00NjA1LWI3NDctODRmN2QwYjFlNjli";
         public string apiSecret = "MjM1MTg3OWMtOThmYS00ZDY1LTlmMzQtMzEyMTJmNWQxOGQz";
 
 
 
         [BindProperty]
-        public Loan _Loan {get; set;}
+        public Loan? _Loan {get; set;}
         public IActionResult OnGet(Loan Loan)
         {
-            if(Loan.LoanID == null){
+            if(Loan == null){
                 return NotFound();
             }
             requestKey = Guid.NewGuid().ToString();
@@ -47,8 +47,8 @@ namespace QBOID.Pages
 
             var formatInfo =new CultureInfo("ja-JP");
             // formatInfo.DateSeparator ="-";
-            _Loan = _context.Loans.Include(l => l.EmployerRecord).First(l => l.LoanID == Loan.LoanID);
-            EmployerSector =  (int)_Loan.EmployerRecord.EmployerSector;
+            _Loan = _context.Loans!.Include(l => l.EmployerRecord).First(l => l.LoanID == Loan.LoanID);
+            EmployerSector =  (int)_Loan!.EmployerRecord!.EmployerSector;
             EmploymentDuration = (int)_Loan.EmployerRecord.EmploymentDuration;
             EmploymentType = (int)_Loan.EmployerRecord.EmploymentType;
             IncomeReceiptMode = (int)_Loan.EmployerRecord.IncomeReceiptMode;
@@ -69,11 +69,11 @@ namespace QBOID.Pages
                 return Forbid();
             }
 
-            var Loan = _context.Loans.First(l => l.LoanID == new Guid(loanId));
+            var Loan = _context.Loans!.First(l => l.LoanID == new Guid(loanId));
             Loan.MimLoanId = new Guid(mimLoanId);
             Loan.Status = (LoanStatus)int.Parse(status);
             Loan.Activity = (LoanActivity)int.Parse(activity);
-            _context.Loans.Update(Loan);
+            _context.Loans!.Update(Loan);
             _context.SaveChanges();
 
             return RedirectToPage("Loans/LoanDetails", new {id = Loan.LoanID});

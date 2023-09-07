@@ -14,7 +14,7 @@
 
 <div class="row col-md-12">
     <div class="col-md-9">
-        <form method="post" id="loanform">
+        <form id="loanform" method="post">
             <div class="form-group">
                 <label class="control-label">E-mail: </label>
                 <input asp-for="Loan.Email" id="email" class="form-control">
@@ -44,84 +44,84 @@
 
             <div class="form-group" action="action" method="GET">
                 <label class="control-label">Employer Sector: </label>
-                <select asp-for="Loan.EmployerRecord.EmployerSector" 
+                <select asp-for="Loan.EmployerRecord!.EmployerSector" 
                 asp-items="Html.GetEnumSelectList<EmployerSector>()" id="EmployerSector" class="form-control"></select>
-                <span asp-validation-for="Loan.EmployerRecord.EmployerSector" class="text-danger"></span>
+                <span asp-validation-for="Loan.EmployerRecord!.EmployerSector" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Employment Type: </label>
-                <select asp-for="Loan.EmployerRecord.EmploymentType" 
+                <select asp-for="Loan.EmployerRecord!.EmploymentType" 
                 asp-items="Html.GetEnumSelectList<EmploymentType>()" id="EmploymentType" class="form-control"></select>
-                <span asp-validation-for="Loan.EmployerRecord.EmploymentType" class="text-danger"></span>
+                <span asp-validation-for="Loan.EmployerRecord!.EmploymentType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Employer: </label>
-                <input asp-for="Loan.EmployerRecord.EmployerName" id="EmployerName" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.EmployerName" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.EmployerName" id="EmployerName" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.EmployerName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Employer Address: </label>
-                <input asp-for="Loan.EmployerRecord.EmployerAddress" id="EmployerAddress" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.EmployerAddress" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.EmployerAddress" id="EmployerAddress" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.EmployerAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">City: </label>
-                <input asp-for="Loan.EmployerRecord.City" id="EmployerCity" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.City" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.City" id="EmployerCity" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.City" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">State: </label>
-                <input asp-for="Loan.EmployerRecord.State" id="EmployerState" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.State" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.State" id="EmployerState" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.State" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Employer Phone Number: </label>
-                <input asp-for="Loan.EmployerRecord.EmployerPhone" id="EmployerPhoneNumber" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.EmployerPhone" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.EmployerPhone" id="EmployerPhoneNumber" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.EmployerPhone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Employment Date: </label>
-                <input asp-for="Loan.EmployerRecord.EmploymentDate" id="EmploymentDate" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.EmploymentDate" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.EmploymentDate" id="EmploymentDate" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.EmploymentDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Net Monthly Income: </label>
-                <input asp-for="Loan.EmployerRecord.NetMonthlyIncome" id="NetMonthlyIncome" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.NetMonthlyIncome" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.NetMonthlyIncome" id="NetMonthlyIncome" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.NetMonthlyIncome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Employment Duration: </label>
-                <select asp-for="Loan.EmployerRecord.EmploymentDuration" 
+                <select asp-for="Loan.EmployerRecord!.EmploymentDuration" 
                 asp-items="Html.GetEnumSelectList<EmploymentLength>()" id="EmploymentDuration" class="form-control"></select>
-                <span asp-validation-for="Loan.EmployerRecord.EmploymentDuration" class="text-danger"></span>
+                <span asp-validation-for="Loan.EmployerRecord!.EmploymentDuration" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Next Payday: </label>
-                <input asp-for="Loan.EmployerRecord.NextPayDay" id="NextPayDay" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.EmploymentDate" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.NextPayDay" id="NextPayDay" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.EmploymentDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Tolerance Days: </label>
-                <input asp-for="Loan.EmployerRecord.ToleranceDays" id="ToleranceDays" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.ToleranceDays" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.ToleranceDays" id="ToleranceDays" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.ToleranceDays" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Total Monthly Expense: </label>
-                <input asp-for="Loan.EmployerRecord.TotalMonthlyExpense" id="TotalMonthlyExpense" class="form-control">
-                <span asp-validation-for="Loan.EmployerRecord.TotalMonthlyExpense" class="text-danger"></span>
+                <input asp-for="Loan.EmployerRecord!.TotalMonthlyExpense" id="TotalMonthlyExpense" class="form-control">
+                <span asp-validation-for="Loan.EmployerRecord!.TotalMonthlyExpense" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Salary Frequency: </label>
-                <select asp-for="Loan.EmployerRecord.SalaryFrequency" 
+                <select asp-for="Loan.EmployerRecord!.SalaryFrequency" 
                 asp-items="Html.GetEnumSelectList<PayFrequency>()" id="SalaryFrequency" class="form-control"></select>
-                <span asp-validation-for="Loan.EmployerRecord.SalaryFrequency" class="text-danger"></span>
+                <span asp-validation-for="Loan.EmployerRecord!.SalaryFrequency" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label class="control-label">Income Receipt Mode: </label>
-                <select asp-for="Loan.EmployerRecord.IncomeReceiptMode" 
+                <select asp-for="Loan.EmployerRecord!.IncomeReceiptMode" 
                 asp-items="Html.GetEnumSelectList<IncomeReceiptMode>()" id="IncomeReceiptMode" class="form-control"></select>
-                <span asp-validation-for="Loan.EmployerRecord.IncomeReceiptMode" class="text-danger"></span>
+                <span asp-validation-for="Loan.EmployerRecord!.IncomeReceiptMode" class="text-danger"></span>
             </div>
 
             <input type="submit" value="Submit" id="submit">
@@ -130,7 +130,7 @@
 </div>
 @section Scripts{
             <script src="https://devembed.azurewebsites.net/embed/js" type="text/javascript"></script>
-            <script>
+            @* <script>
                 EmailInput = document.getElementById('email');
                 PhoneNumberInput = document.getElementById('PhoneNumber');
                 BvnInput = document.getElementById('BVN');
@@ -241,6 +241,6 @@
                     data.employmentRecord.incomeReceiptMode = IncomeReceiptModeInput.value;
                 });
             
-                loadMimEmbedded('submit', data)
-            </script>
+                loadMimEmbedded('submit', data);
+            </script> *@
     }

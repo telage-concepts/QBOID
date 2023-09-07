@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 namespace QBOID.Controllers
 {
     public class TransactionHistoryQuery{
-        public string Authorisation {get; set;} 
-        public string RequestKey {get; set;}
-        public string Email {set; get;}
+        public string? Authorisation {get; set;} 
+        public string? RequestKey {get; set;}
+        public string? Email {set; get;}
         public string? PhoneNumber{get; set;}
     }
     [ApiController]
@@ -25,9 +25,9 @@ namespace QBOID.Controllers
         [HttpPost]
         public IActionResult Index(TransactionHistoryQuery transactionHistoryQuery)
         {
-            string ExpectedAuthorisation = Sha512.Sha512AuthHash(transactionHistoryQuery.RequestKey).ToString();
+            string ExpectedAuthorisation = Sha512.Sha512AuthHash(transactionHistoryQuery.RequestKey!).ToString();
             if(ExpectedAuthorisation == transactionHistoryQuery.Authorisation){
-                var Customer = _context.Customers
+                var Customer = _context.Customers!
                 .Include(c => c.Transactions)
                 .First(c => c.Email == transactionHistoryQuery.Email);
                 var transactions = Customer.Transactions;

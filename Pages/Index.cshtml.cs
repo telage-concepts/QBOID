@@ -13,7 +13,7 @@ public class IndexModel : PageModel
     public Loan Loan{get; set;} = default!;
     private readonly ILogger<IndexModel> _logger;
     private readonly QBOID.ApplicationDbContext _context;
-    public string requestKey;
+    public string? requestKey;
     public string apiKey = "OWY2NDUyZjUtYTQ4MC00NjA1LWI3NDctODRmN2QwYjFlNjli";
     public string apiSecret = "MjM1MTg3OWMtOThmYS00ZDY1LTlmMzQtMzEyMTJmNWQxOGQz";
     public IndexModel(ILogger<IndexModel> logger, QBOID.ApplicationDbContext context)
@@ -41,7 +41,7 @@ public class IndexModel : PageModel
             _context.SaveChanges();
         }
         var Loant = _context.Loans.First(i => i.LoanID == Loan.LoanID);
-        GenerateTransactionHistory.GenerateHistory(_context, Loant.Email);
+        GenerateTransactionHistory.GenerateHistory(_context, Loant.Email!);
 
         return RedirectToPage("action", Loant);
     }
