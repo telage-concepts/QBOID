@@ -15,6 +15,7 @@ public partial class ApplicationDbContext : DbContext
     public DbSet<EmployerRecord>? EmployerRecord{get; set;}
     public DbSet<Customer>? Customers {get; set;}
     public DbSet<Transaction>? Transactions {get; set;}
+    public DbSet<PaymentSchedule>? PaymentSchedules { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)

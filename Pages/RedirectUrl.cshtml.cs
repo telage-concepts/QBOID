@@ -7,9 +7,9 @@ using QBOID.Models;
 namespace QBOID.Pages
 {
     public class responseMessage{
-        public bool success {get; set;}
-        public string? data {get; set;}
-        public string? message{get; set;}
+        public bool success { get; set; }
+        public string? data { get; set; }
+        public string? message{ get; set; }
     }
     public class RedirectUrlModel : PageModel
     {

@@ -15,11 +15,18 @@ namespace QBOID.Controllers
         public string? Authorisation {get; set;}
         public string? RequestKey {get; set;}
         public string? MimLoanId {get; set;}
-        public string? Status {get; set;}
-        public Guid LoanId {get; set;}
-        public string? Activity {get; set;}
+        public string? Status { get; set; }
+        public Guid LoanId { get; set; }
+        public string? Activity { get; set; }
+        public List<PaymentSchedule>? RepaymentSchedule { get; set; }
     }
-    
+    public class PaymentSchedule
+    {
+        public DateTime DueDate;
+        public Decimal Amount;
+        public Guid MIMScheduleId;
+    }
+
     [ApiController]
     [Route("[controller]")]
     public class ActivityCallbackController : Controller
@@ -40,6 +47,14 @@ namespace QBOID.Controllers
 
                 Loan.Status = (LoanStatus)Enum.Parse(typeof(LoanStatus), activityUpdateQuery.Status!);
                 Loan.Activity = (LoanActivity)Enum.Parse(typeof(LoanActivity), activityUpdateQuery.Activity!);
+                if(activityUpdateQuery.RepaymentSchedule != null){
+                    foreach(var schedule in activityUpdateQuery.RepaymentSchedule)
+                    _context.PaymentSchedules.Add(new QBOID.Models.PaymentSchedule{
+                        DueDate = schedule.DueDate,
+                        Amount = schedule.Amount,
+                        MIMScheduleId = schedule.MIMScheduleId
+                    });
+                }
 
                 _context.Update(Loan);
                 _context.SaveChanges();

@@ -11,15 +11,15 @@ namespace QBOID.Controllers
     public class TransactionHistoryQuery{
         public string? Authorisation {get; set;} 
         public string? RequestKey {get; set;}
-        public string? Email {set; get;}
-        public string? PhoneNumber{get; set;}
+        public string? CustomerId {get; set;}
     }
     [ApiController]
     [Route("[controller]")]
     public class TransactionHistoryController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public TransactionHistoryController(ApplicationDbContext context){
+        public TransactionHistoryController(ApplicationDbContext context)
+        {
             _context = context;
         }
         [HttpPost]
@@ -29,7 +29,7 @@ namespace QBOID.Controllers
             if(ExpectedAuthorisation == transactionHistoryQuery.Authorisation){
                 var Customer = _context.Customers!
                 .Include(c => c.Transactions)
-                .First(c => c.Email == transactionHistoryQuery.Email);
+                .First(c => c.Email == transactionHistoryQuery.CustomerId);
                 var transactions = Customer.Transactions;
                 return Ok(transactions);
             }

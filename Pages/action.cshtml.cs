@@ -55,8 +55,8 @@ namespace QBOID.Pages
             SalaryFrequency = (int)_Loan.EmployerRecord.SalaryFrequency;
             EmploymentDate = _Loan.EmployerRecord.EmploymentDate;
             NextPayDay = _Loan.EmployerRecord.NextPayDay;
-            EmploymentDateString = EmploymentDate.ToString("d", formatInfo);
-            NextPayDayString = NextPayDay.ToString("d", formatInfo);
+            EmploymentDateString = EmploymentDate.ToString("yyyy-MM-ddTHH:mm:ss");
+            NextPayDayString = NextPayDay.ToString("YYYY-MM-DDThh:mm:ss");
             return Page();
         }
 
