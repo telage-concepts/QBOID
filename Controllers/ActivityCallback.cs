@@ -24,7 +24,6 @@ namespace QBOID.Controllers
     {
         public DateTime DueDate;
         public Decimal Amount;
-        public Guid MIMScheduleId;
     }
 
     [ApiController]
@@ -51,8 +50,7 @@ namespace QBOID.Controllers
                     foreach(var schedule in activityUpdateQuery.RepaymentSchedule)
                     _context.PaymentSchedules.Add(new QBOID.Models.PaymentSchedule{
                         DueDate = schedule.DueDate,
-                        Amount = schedule.Amount,
-                        MIMScheduleId = schedule.MIMScheduleId
+                        Amount = schedule.Amount
                     });
                 }
 
