@@ -56,7 +56,7 @@ namespace QBOID.Pages
             EmploymentDate = _Loan.EmployerRecord.EmploymentDate;
             NextPayDay = _Loan.EmployerRecord.NextPayDay;
             EmploymentDateString = EmploymentDate.ToString("yyyy-MM-ddTHH:mm:ss");
-            NextPayDayString = NextPayDay.ToString("YYYY-MM-DDThh:mm:ss");
+            NextPayDayString = NextPayDay.ToString("yyyy-MM-ddTHH:mm:ss");
             return Page();
         }
 

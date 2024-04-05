@@ -1,4 +1,4 @@
-﻿@page "/action"
+@page "/action"
 @model QBOID.Pages.actionModel
 @{
 
@@ -19,6 +19,7 @@
                     email: "@Model._Loan!.Email",
                     phoneNumber: "@Model._Loan!.PhoneNumber",
                     bvn: "@Model._Loan!.BankVerificationNumber",
+                    nin: "@Model._Loan!.NationalIdentificationNumber",
                     apiKey: "@Model.apiKey",
                     authorisation: '@ViewData["Authorisation"]',
                     requestKey: "@Model.requestKey",

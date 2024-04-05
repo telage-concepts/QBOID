@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace QBOID.Models;
 
@@ -10,6 +11,8 @@ public class Loan
     public string? BankVerificationNumber{get; set;}
     public string? BankCode{get; set;}
     public string? BankAccountNumber{get; set;}
+    [StringLength(11, MinimumLength = 11)]
+    public string? NationalIdentificationNumber { get; set; }
     public LoanStatus Status {get; set;} = LoanStatus.None;
     public LoanActivity Activity {get; set;} =  LoanActivity.None;
     public Guid EmployerRecordID{get; set;}

@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model IndexModel
 @using QBOID.Models
 
@@ -29,6 +29,11 @@
                 <label class="control-label">Bank Verification Number: </label>
                 <input asp-for="Loan.BankVerificationNumber" id="BVN" class="form-control">
                 <span asp-validation-for="Loan.BankVerificationNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">National Identification Number: </label>
+                <input asp-for="Loan.NationalIdentificationNumber" id="NIN" class="form-control">
+                <span asp-validation-for="Loan.NationalIdentificationNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Bank Code: </label>
