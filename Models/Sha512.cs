@@ -1,11 +1,11 @@
-﻿namespace QBOID;
+namespace QBOID;
 using System.Security.Cryptography;
 using System.Text;
 
 public class Sha512
 {
-        public static StringBuilder Sha512AuthHash(string requestKey,string apiKey = "OWY2NDUyZjUtYTQ4MC00NjA1LWI3NDctODRmN2QwYjFlNjli",
-         string apiSecret = "MjM1MTg3OWMtOThmYS00ZDY1LTlmMzQtMzEyMTJmNWQxOGQz")
+        public static StringBuilder Sha512AuthHash(string requestKey,string apiKey = "MDUzMTkxN2ItMjliOS00MmVmLWI5MDEtNGQ5YTliNDZiMzIy\r\n",
+         string apiSecret = "YTBjYmE1ZGYtNjQ1ZC00YzU1LWI2NmEtYzYzYjRjZTdjMTUy")
         {
             StringBuilder ToHash = new StringBuilder();
             ToHash.Append(apiKey);

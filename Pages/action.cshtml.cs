@@ -41,7 +41,7 @@ namespace QBOID.Pages
             }
             requestKey = Guid.NewGuid().ToString();
 
-            var enc = Sha512.Sha512AuthHash(requestKey);
+            var enc = Sha512.Sha512AuthHash(requestKey, apiKey, apiSecret);
             
             ViewData["Authorisation"] = enc.ToString();
 
