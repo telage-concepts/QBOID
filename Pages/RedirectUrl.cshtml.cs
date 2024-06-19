@@ -48,7 +48,7 @@ namespace QBOID.Pages
             var responseJson = JsonConvert.DeserializeObject<responseMessage>(response.Content!.ToString());
             Console.WriteLine(response.Content.ToString());
             Console.WriteLine(responseJson);
-            var Loan = _context.Loans!.FirstOrDefault(l=> l.LoanID == _LoanId);
+            var Loan = _context.Loans!.First(l=> l.LoanID == _LoanId);
             Loan!.Status = (LoanStatus)Enum.Parse(typeof(LoanStatus), responseJson!.data!, true);
             _context.Loans!.Update(Loan);
             _context.SaveChanges();
