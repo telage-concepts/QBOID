@@ -14,8 +14,8 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
     private readonly QBOID.ApplicationDbContext _context;
     public string? requestKey;
-    public string apiKey = "OWY2NDUyZjUtYTQ4MC00NjA1LWI3NDctODRmN2QwYjFlNjli";
-    public string apiSecret = "MjM1MTg3OWMtOThmYS00ZDY1LTlmMzQtMzEyMTJmNWQxOGQz";
+    public string apiKey = "MDUzMTkxN2ItMjliOS00MmVmLWI5MDEtNGQ5YTliNDZiMzIy";
+    public string apiSecret = "YTBjYmE1ZGYtNjQ1ZC00YzU1LWI2NmEtYzYzYjRjZTdjMTUy";
     public IndexModel(ILogger<IndexModel> logger, QBOID.ApplicationDbContext context)
     {
         _logger = logger;
