@@ -15,35 +15,6 @@
             <script>
                 
 
-                loadMimEmbedded('MIMLoanBtn', {
-                    email: "@Model._Loan!.Email",
-                    phoneNumber: "@Model._Loan!.PhoneNumber",
-                    bvn: "@Model._Loan!.BankVerificationNumber",
-                    nin: "@Model._Loan!.NationalIdentificationNumber",
-                    apiKey: "@Model.apiKey",
-                    authorisation: '@ViewData["Authorisation"]',
-                    requestKey: "@Model.requestKey",
-                    loanId: "@Model._Loan!.LoanID",
-                    bankCode: "@Model._Loan!.BankCode",
-                    BankAccountNumber: "@Model._Loan!.BankAccountNumber",
-                    customerId: "@Model._Loan!.Email",
-                    employmentRecord: {
-                        sector: "@Model.EmployerSector",
-                        employmentType: "@Model.EmploymentType",
-                        employerName: "@Model._Loan!.EmployerRecord!.EmployerName",
-                        employerAddress: "@Model._Loan!.EmployerRecord!.EmployerAddress",
-                        city: "@Model._Loan!.EmployerRecord!.City",
-                        state: "@Model._Loan!.EmployerRecord!.State",
-                        employerPhone: "@Model._Loan!.EmployerRecord!.EmployerPhone",
-                        employmentDate: '@Model.EmploymentDateString',
-                        netMonthlyIncome: @Model._Loan!.EmployerRecord!.NetMonthlyIncome,
-                        duration: @Model.EmploymentDuration,
-                        nextPayDay: '@Model.NextPayDayString',
-                        toleranceDays: @Model._Loan!.EmployerRecord!.ToleranceDays,
-                        totalMonthlyExpense: @Model._Loan!.EmployerRecord!.TotalMonthlyExpense,
-                        salaryFrequency: @Model.SalaryFrequency,
-                        incomeReceiptMode: @Model.IncomeReceiptMode
-                    }
-                });
+                loadMimEmbedded('MIMLoanBtn', { apiKey: "@Model.apiKey" });
             </script>
     }
